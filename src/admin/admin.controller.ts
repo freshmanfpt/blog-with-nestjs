@@ -6,7 +6,7 @@ import { AdminService } from "./admin.service";
 export class AdminController {
     constructor(private readonly adminService : AdminService){}
 
-    @Post("removeAdmin")
+    @Post("remove")
     async deleteAdmin(
         @Body("name")   name: string,
         @Body("password")  password: string ,
@@ -16,7 +16,7 @@ export class AdminController {
         });
     }
 
-    @Post("addAdmin")
+    @Post("add")
     async addAdmin(
         @Body("name")   name: string,
         @Body("password")  password: string ,
@@ -27,7 +27,15 @@ export class AdminController {
         });
 
     }
-    @Get("adminList")
+    @Post("find")
+    async findAdmin(
+        @Body("name") name: string,
+    ){
+        return this.adminService.findOne(name).catch(error => {
+            return error;
+        })
+    }
+    @Get("list")
     async getList(){
         return this.adminService.getAdminList().catch(error => {
             return error;

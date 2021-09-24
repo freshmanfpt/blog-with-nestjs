@@ -1,9 +1,12 @@
-import { Entity ,Column , PrimaryColumn ,PrimaryGeneratedColumn} from "typeorm";
+import { Entity ,Column , PrimaryColumn ,PrimaryGeneratedColumn, OneToMany} from "typeorm";
+import { Blog } from "./blog.entity";
 
 @Entity()
 export class Category {
     @PrimaryGeneratedColumn()
     id: number;
-    @Column()
+    @Column({unique:true})
     description: string;
+    @OneToMany(type => Blog , blog => blog.category)
+    blogs:Blog[];
 }

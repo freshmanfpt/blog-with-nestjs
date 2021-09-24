@@ -1,11 +1,11 @@
-import { Entity ,Column , PrimaryColumn ,PrimaryGeneratedColumn, OneToMany} from "typeorm";
+import { Entity ,Column , PrimaryColumn ,PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import { Blog } from "./blog.entity";
 
 @Entity()
 export class Admin {
     @PrimaryGeneratedColumn()
     id: number;
-    @Column()
+    @Column({unique:true})
     name: string;
     @Column()
     password: string;

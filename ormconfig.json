@@ -6,5 +6,5 @@
     "password": "mritachi123",
     "database": "blog",
     "entities": ["dist/**/*.entity{.ts,.js}"],
-    "synchronize": false
+    "synchronize": true
   }
